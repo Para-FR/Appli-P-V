@@ -1,6 +1,6 @@
 <?php require_once('../../includes/config.php') ?>
 <?php
-function do_action_produit($action)
+function do_action_demande($action)
 {
     if ($action == 'ajouter') {
 
@@ -39,9 +39,27 @@ function do_action_produit($action)
             $resultat_modifier = '';
             return $test;
         }
-    } else {
-        $resultat_modifier = '';
-        return $resultat_modifier;
+    }
+    if ($action == 'attente') {
+        $element = $_GET['element'];
+        $attente = 'En Attente';
+        if (!empty($element)) {
+            executeRequete("UPDATE demandes SET etat='" . $attente . "' WHERE id_demande='" . $_GET['element'] . "'");
+        }
+    }
+    if ($action == 'traitement') {
+        $element = $_GET['element'];
+        $traitement = 'En cours de traitement';
+        if (!empty($element)) {
+            executeRequete("UPDATE demandes SET etat='" . $traitement . "' WHERE id_demande='" . $_GET['element'] . "'");
+        }
+    }
+    if ($action == 'traite') {
+        $element = $_GET['element'];
+        $traite = 'Traité';
+        if (!empty($element)) {
+            executeRequete("UPDATE demandes SET etat='" . $traite . "' WHERE id_demande='" . $_GET['element'] . "'");
+        }
     }
 }
 // Formulaire d'ajout de Produit
@@ -103,14 +121,22 @@ if (isset($_POST['sub_modifier_demande'])) {
     }
 }
 // SI l'action est définie et qu'elle n'est pas vide
-if (isset($_GET['action']) && !empty($_GET['action']) && $_GET['action'] == 'modifier') {
-    $test = do_action_produit($_GET['action']);
-}
 if (isset($_GET['action']) && !empty($_GET['action']) && $_GET['action'] == 'supprimer') {
-    $suppression = do_action_produit($_GET['action']);
-}
-else{
-    $defaut = do_action_produit('ajouter');
+    $suppression = do_action_demande($_GET['action']);
+} ?>
+<?php if (isset($_GET['action']) && !empty($_GET['action']) && $_GET['action'] == 'traitement') {
+    $traitement = do_action_demande($_GET['action']);
+} ?>
+<?php if (isset($_GET['action']) && !empty($_GET['action']) && $_GET['action'] == 'traite') {
+    $traite = do_action_demande($_GET['action']);
+} ?>
+<?php if (isset($_GET['action']) && !empty($_GET['action']) && $_GET['action'] == 'attente') {
+    $attente = do_action_demande($_GET['action']);
+} ?>
+<?php if (isset($_GET['action']) && !empty($_GET['action']) && $_GET['action'] == 'consulter') {
+    $consulter = do_action_demande($_GET['action']);
+}else{
+    $defaut = do_action_demande('ajouter');
 }
 
 ?>
@@ -520,9 +546,9 @@ else{
         <div class=\"dropdown\">
             <button class=\"btn btn-warning dropdown-toggle btn-xs\" type=\"button\" data-toggle=\"dropdown\"><i class='fa fa-cog'></i></button>
             <ul class=\"dropdown-menu\">
-                <li><a name='attente' href='support_client.php?action=attente&element=" . $ligne['id_demande'] . "'>En Attente</a></li>
-                <li><a name='livraison' href='support_client.php?action=traitement&element=" . $ligne['id_demande'] . "'>En cours de traitement</a></li>
-                <li><a name='livree' href='support_client.php?action=traite&element=" . $ligne['id_demande'] . "'>Traité</a></li>
+                <li><a name='attente' href='gestion_demandes.php?action=attente&element=" . $ligne['id_demande'] . "'>En Attente</a></li>
+                <li><a name='livraison' href='gestion_demandes.php?action=traitement&element=" . $ligne['id_demande'] . "'>En cours de traitement</a></li>
+                <li><a name='livree' href='gestion_demandes.php?action=traite&element=" . $ligne['id_demande'] . "'>Traité</a></li>
             </ul>
 
             <a name=\'action\' href=gestion_demandes.php?action=consulter&element=" . $ligne['id_demande'] . " class=\"btn btn-azur btn-xs\">
