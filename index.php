@@ -7,7 +7,7 @@
  */
 require_once ('./admin/includes/config.php');
 if (internauteEstConnecte() || internauteEstConnecteEtEstAdmin()){
-    header('Location:./admin/modules/index/index');
+    header('Location:./admin/modules/index/index.php');
 }else{
-    header('Location:login');
+    header('Location:login.php');
 }

@@ -10,7 +10,7 @@ if (isset($_POST['connect'])) {
                     $_SESSION['membre'][$indice] = $element;
                 }
             }
-            header("location:./admin/modules/index/index");
+            header("location:./admin/modules/index/index.php");
         } else {
             $contenu = '<strong>Erreur !</strong><br> Combinaison Pseudo et Mot de Passe incorrect.';
         }
