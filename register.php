@@ -105,7 +105,7 @@ if (isset($_POST['sub_register'])) {
             </div>
         </form>
 
-        <p class="paddingTop20 text-center">Déjà un compte ? <a href="login" class="text-center paddingTop20"> Se
+        <p class="paddingTop20 text-center">Déjà un compte ? <a href="login.php" class="text-center paddingTop20"> Se
                 Connecter</a></p>
     </div>
     <!-- /.form-box -->

@@ -77,7 +77,7 @@ if (isset($_POST['connect'])) {
         <hr>
         <div class="text-center">
             <a href="#">Mot de Passe Oublié ?</a><br>
-            <a href="register" class="text-center">S'inscrire</a>
+            <a href="register.php" class="text-center">S'inscrire</a>
         </div>
 
 
