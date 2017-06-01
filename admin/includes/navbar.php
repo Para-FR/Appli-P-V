@@ -192,8 +192,8 @@
             </span>
                     </a>
                     <ul class="treeview-menu menu-open" style="display: none;">
-                        <li><a href="../demandes/gestion_demandes"><i class="fa fa-cogs"></i> Gestion</a></li>
-                        <li><a href="../demandes/ajout_demande"><i class="fa fa-plus"></i> Ajouter</a></li>
+                        <li><a href="../demandes/gestion_demandes.php"><i class="fa fa-cogs"></i> Gestion</a></li>
+                        <li><a href="../demandes/ajout_demande.php"><i class="fa fa-plus"></i> Ajouter</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
